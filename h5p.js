@@ -7,22 +7,19 @@ H5PEditor.widgets.kekule_reaction_editor = H5PEditor.KekuleReactionEditor = (fun
     this.params = params;
     this.setValue = setValue;
     this.applet = undefined;
+    this.data = h5p_get_data_obj(this.params);
   }
    
   C.prototype.appendTo = function ($container) {
-    
-    var data = h5p_get_data_obj(this.params);
-
     var el = build("div", "kekule_wrapper");
     $container.append(el);
     var el_applet_container = build("div", undefined, el);
     el_applet_container.id = random_string();
 
     this.applet = new kekule_reaction_exercise(el_applet_container, "editor");
-    try {
-      this.applet.data = data.data;
-    } catch(ex) {}
-
+    var data = undefined;
+    try { data = this.data.data; } catch(ex) {}
+    this.applet.data = data;
   };
 
   C.prototype.save = function() {

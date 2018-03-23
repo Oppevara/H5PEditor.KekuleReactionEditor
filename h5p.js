@@ -11,7 +11,7 @@ H5PEditor.widgets.kekule_reaction_editor = H5PEditor.KekuleReactionEditor = (fun
   }
    
   C.prototype.appendTo = function ($container) {
-    var el = build("div", "kekule_wrapper");
+    var el = build("div", "kekule_reaction_editor");
     $container.append(el);
     var el_applet_container = build("div", undefined, el);
     el_applet_container.id = random_string();
